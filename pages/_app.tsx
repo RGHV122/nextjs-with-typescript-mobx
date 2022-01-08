@@ -1,8 +1,34 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+
+import App from "next/app";
+import React from "react";
+import { StoreProvider } from '../store/stores';
+
+
+class MyApp extends App {
+
+  // Fetching serialized(JSON) store state
+  static async getInitialProps(appContext: any) {
+    const appProps = await App.getInitialProps(appContext);
+
+    // Send it to `render`
+    return {
+      ...appProps
+    };
+
+  }
+
+  render() {
+    const { Component, pageProps } = this.props;
+
+    return (
+      <StoreProvider>
+        <Component {...pageProps} />
+      </StoreProvider>
+
+    );
+  }
 }
 
-export default MyApp
+
+export default MyApp;

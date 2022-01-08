@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -5,8 +6,9 @@ import styles from '../styles/Home.module.css'
 import { useMobxStores } from '../store/stores';
 import { observer, useObserver } from 'mobx-react-lite';
 
-const Home: NextPage = () => {
+const Hello = () => {
   const {uiStore } = useMobxStores()
+
 
     return (<div className={styles.container}>
       <h1 onClick={() => {
@@ -29,7 +31,7 @@ const Home: NextPage = () => {
         </p>
 
         <div className={styles.grid}>
-          <a href="/hello" className={styles.card}>
+          <a href="/" className={styles.card}>
             <h2>Documentation &rarr;</h2>
             <p>Find in-depth information about Next.js features and API.</p>
           </a>
@@ -74,4 +76,4 @@ const Home: NextPage = () => {
     </div>)
 }
 
-export default observer(Home)
+export default observer(Hello)
